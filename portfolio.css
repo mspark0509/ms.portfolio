@@ -255,7 +255,7 @@ pre {
 }
 
 .title {
-    margin-bottom: 42px
+    margin-bottom: 56px
 }
 
 .title small {
@@ -382,7 +382,7 @@ pre {
 
 .demo {
     overflow: hidden;
-    margin-bottom: 20px
+    margin-bottom: 160px
 }
 
 .demoHead {
@@ -536,7 +536,7 @@ iframe.frame {
 }
 
 .contact {
-    padding-bottom: 150px
+    padding-bottom: 250px
 }
 
 .contactBox {
@@ -557,9 +557,10 @@ iframe.frame {
 
 footer {
     border-top: 1px solid var(--line);
-    padding: 34px 22px;
+    padding: 60px 22px;
     color: var(--muted);
-    font-size: 12px
+    font-size: 12px;
+    background-color: rgba(0,0,0,0.8);
 }
 
 footer div {
