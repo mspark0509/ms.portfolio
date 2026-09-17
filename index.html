@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Minsu Park React Developer Portfolio">
+  <title>Minsu Park — React Developer</title>
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="space"></div>
+
+  <header>
+    <nav>
+      <a class="logo" href="#home">mspark<b>/</b>dev</a>
+      <button class="menu" aria-label="메뉴 열기">☰</button>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="heroText reveal">
+        <p class="kicker">// portfolio.init()</p>
+        <h1>MIN<span>SU</span><br>PARK<span>.</span></h1>
+        <p class="lead"><strong>React Developer</strong> — 디자인의 의도를 이해하고 사용자 경험으로 연결되는 인터페이스를 만드는 프론트엔드 개발자입니다.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/" target="_blank" rel="noopener">⌘ GitHub</a>
+          <a class="btn" href="mailto:your-email@example.com">✉ Email</a>
+          <a class="btn" href="#projects">프로젝트 보기 ↓</a>
+        </div>
+      </div>
+      <div class="terminal card reveal delay">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <pre><span class="p">const</span> developer = {
+  <span class="g">name</span>: <span class="w">"Minsu Park"</span>,
+  <span class="g">role</span>: <span class="w">"React Developer"</span>,
+  <span class="g">focus</span>: [<span class="w">"UI"</span>, <span class="w">"UX"</span>, <span class="w">"Responsive"</span>],
+  <span class="g">projects</span>: <span class="w">2</span>,
+  <span class="g">status</span>: <span class="w">"open_to_work"</span>
+};<span class="cursor"></span></pre>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="title reveal">
+        <small>01 / PROJECTS</small>
+        <h2>Selected work.</h2>
+        <p>실제로 제작하고 GitHub Pages에 배포한 두 프로젝트입니다. 사이트를 직접 확인하고 프로젝트의 구현 포인트까지 살펴볼 수 있습니다.</p>
+      </div>
+
+      <div class="grid">
+        <article class="project card reveal">
+          <div class="visual haevichi">HAEVICHI<br><small>HOTEL & RESORT</small></div>
+          <div class="body">
+            <p class="number">PROJECT 01</p>
+            <h3>Haevichi Hotel & Resort</h3>
+            <p>호텔과 리조트의 브랜드 경험을 웹으로 구현한 프로젝트입니다. 대형 비주얼과 다양한 콘텐츠를 섹션별로 구성하고 객실, 다이닝, 시설, 컨시어지 등의 정보를 자연스럽게 탐색하도록 설계했습니다.
+            </p>
+            <div class="feature">
+              <div><b>01</b><span>대형 Hero / 콘텐츠 섹션</span></div>
+              <div><b>02</b><span>시설·콘텐츠 탭 인터랙션</span></div>
+              <div><b>03</b><span>스크롤 기반 페이지 흐름</span></div>
+              <div><b>04</b><span>반응형 Desktop / Mobile</span></div>
+            </div>
+            <div class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive</span></div>
+            <div class="links"><a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a><a
+                class="btn primary" href="https://mspark0509.github.io/haevichi-test-server/" target="_blank"
+                rel="noopener">Live Site ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project card reveal delay">
+          <div class="visual byheydey">BYHEYDEY<br><small>FURNITURE BRAND</small></div>
+          <div class="body">
+            <p class="number">PROJECT 02</p>
+            <h3>BYHEYDEY Furniture</h3>
+            <p>가구 브랜드의 상품과 브랜드 콘텐츠를 함께 보여주는 웹 프로젝트입니다. 제품 이미지와 정보의 가독성을 높이고 컬렉션, 베스트, 케어, 프로젝트 등의 콘텐츠가 하나의 브랜드 흐름으로
+              이어지도록 구성했습니다.</p>
+            <div class="feature">
+              <div><b>01</b><span>상품 / 가격 정보 UI</span></div>
+              <div><b>02</b><span>컬렉션·프로모션 콘텐츠</span></div>
+              <div><b>03</b><span>브랜드 비주얼 중심 구성</span></div>
+              <div><b>04</b><span>반응형 Desktop / Mobile</span></div>
+            </div>
+            <div class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>UI/UX</span></div>
+            <div class="links"><a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a><a
+                class="btn primary" href="https://wjdqhal.github.io/byheydey-fin/" target="_blank" rel="noopener">Live
+                Site ↗</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="demoSection">
+      <div class="title reveal"><small>02 / LIVE DEMO</small>
+        <h2>실제 사이트 시연.</h2>
+        <p>포트폴리오 안에서 직접 배포된 사이트를 확인할 수 있도록 구성했습니다. Desktop / Mobile 버튼으로 반응형 화면을 바로 전환해서 볼 수 있으며, 일부 브라우저에서는 외부 사이트의 iframe 표시가 제한될 수 있습니다.</p>
+      </div>
+      <div class="demo card reveal">
+        <div class="demoHead">
+          <strong>Haevichi — Live Preview</strong>
+          <div class="demoRight">
+            <div class="deviceToggle" role="tablist" aria-label="화면 크기 전환">
+              <button class="deviceBtn active" type="button" data-device="desktop" role="tab" aria-selected="true">🖥
+                Desktop</button>
+              <button class="deviceBtn" type="button" data-device="mobile" role="tab" aria-selected="false">📱
+                Mobile</button>
+            </div>
+            <a href="https://mspark0509.github.io/haevichi-test-server/" target="_blank" rel="noopener">새 창에서 보기 ↗</a>
+          </div>
+        </div>
+        <div class="demoBody">
+          <iframe class="frame" src="https://mspark0509.github.io/haevichi-test-server/"
+            title="Haevichi 프로젝트 실제 사이트 시연"></iframe>
+        </div>
+      </div>
+      <div class="demo card reveal">
+        <div class="demoHead">
+          <strong>BYHEYDEY — Live Preview</strong>
+          <div class="demoRight">
+            <div class="deviceToggle" role="tablist" aria-label="화면 크기 전환">
+              <button class="deviceBtn active" type="button" data-device="desktop" role="tab" aria-selected="true">🖥
+                Desktop</button>
+              <button class="deviceBtn" type="button" data-device="mobile" role="tab" aria-selected="false">📱
+                Mobile</button>
+            </div>
+            <a href="https://wjdqhal.github.io/byheydey-fin/" target="_blank" rel="noopener">새 창에서 보기 ↗</a>
+          </div>
+        </div>
+        <div class="demoBody">
+          <iframe class="frame" src="https://wjdqhal.github.io/byheydey-fin/" title="BYHEYDEY 프로젝트 실제 사이트 시연"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="title reveal"><small>03 / STACK</small>
+        <h2>Tech stack.</h2>
+        <p>현재 사용하는 기술과 앞으로 React 개발에 집중해 확장하고 있는 기술입니다.</p>
+      </div>
+      <div class="skills reveal">
+        <div class="skill card"><b>R</b>
+          <h3>React</h3>
+          <p>Component UI</p>
+        </div>
+        <div class="skill card"><b>TS</b>
+          <h3>TypeScript</h3>
+          <p>Type Safety</p>
+        </div>
+        <div class="skill card"><b>JS</b>
+          <h3>JavaScript</h3>
+          <p>Interaction</p>
+        </div>
+        <div class="skill card"><b>TW</b>
+          <h3>Tailwind CSS</h3>
+          <p>Utility Styling</p>
+        </div>
+        <div class="skill card"><b>GH</b>
+          <h3>GitHub</h3>
+          <p>Version Control</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="title reveal"><small>04 / DEVELOPMENT</small>
+        <h2>How I build.</h2>
+        <p>프로젝트를 진행할 때 디자인을 코드로 옮기는 것에서 끝내지 않고 구조와 사용자 경험까지 함께 확인합니다.</p>
+      </div>
+      <div class="features reveal">
+        <div class="card featureBox"><b>01 / STRUCTURE</b>
+          <h3>정보 구조</h3>
+          <p>페이지를 섹션과 컴포넌트 단위로 나누고 콘텐츠의 우선순위를 정리합니다.</p>
+        </div>
+        <div class="card featureBox"><b>02 / UI</b>
+          <h3>디자인 구현</h3>
+          <p>Typography, spacing, grid, visual hierarchy를 기준으로 시안과 실제 화면의 차이를 줄입니다.</p>
+        </div>
+        <div class="card featureBox"><b>03 / INTERACTION</b>
+          <h3>인터랙션</h3>
+          <p>메뉴, 탭, hover, scroll reveal 등 페이지의 목적에 맞는 동작을 구현합니다.</p>
+        </div>
+        <div class="card featureBox"><b>04 / RESPONSIVE</b>
+          <h3>반응형</h3>
+          <p>Desktop부터 Mobile까지 콘텐츠 우선순위가 유지되는 유연한 레이아웃을 구성합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="card contactBox reveal">
+        <p class="kicker">// ready_to_work()</p>
+        <h2>Let's build<br>something useful.</h2>
+        <p>새로운 프로젝트와 프론트엔드 개발 기회를 기다리고 있습니다.</p>
+        <div class="actions"><a class="btn primary" href="mailto:your-email@example.com">Email me →</a><a class="btn"
+            href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><span>© 2026 MINSU PARK — React Developer</span><span>Built with HTML · CSS · JavaScript</span></div>
+  </footer>
+  <script src="portfolio.js"></script>
+</body>
+
+</html>
