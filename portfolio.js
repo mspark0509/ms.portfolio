@@ -38,8 +38,6 @@ window.addEventListener("pointermove", e => { mouse.x = e.clientX; mouse.y = e.c
 window.addEventListener("pointerleave", () => mouse.active = false);
 resize(); requestAnimationFrame(draw);
 
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add("show") }), { threshold: .1 });
-document.querySelectorAll(".reveal").forEach(e => io.observe(e));
 document.querySelector(".menu").addEventListener("click", () => document.querySelector("nav ul").classList.toggle("open"));
 document.querySelectorAll("nav a").forEach(a => a.addEventListener("click", () => document.querySelector("nav ul").classList.remove("open")));
 
@@ -55,3 +53,115 @@ document.querySelectorAll(".demo").forEach(demo => {
     });
   });
 });
+
+/* ===== 100vh 페이지 + 3D 큐브 롤 전환 ===== */
+const root = document.documentElement;
+const cube = document.querySelector(".cube");
+const faces = [...document.querySelectorAll(".face")];
+const scrollers = faces.map(f => f.querySelector(".scroll"));
+const labels = ["Home", "Projects", "Live Demo", "Skills", "Process", "Contact"];
+const DUR = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1000; // 전환 속도(ms)
+let cur = Math.max(0, faces.findIndex(f => "#" + f.id === location.hash));
+let busy = false, lockUntil = 0, lastScroll = 0;
+root.style.setProperty("--dur", DUR + "ms");
+
+function setSize() {
+  root.style.setProperty("--hw", innerWidth / 2 + "px");
+  root.style.setProperty("--persp", Math.max(1800, innerWidth * 1.7) + "px");
+}
+setSize(); window.addEventListener("resize", setSize);
+
+const pager = document.createElement("div");
+pager.className = "pager";
+faces.forEach((f, i) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.title = labels[i]; b.setAttribute("aria-label", labels[i]);
+  b.addEventListener("click", () => go(i));
+  pager.appendChild(b);
+});
+document.body.appendChild(pager);
+
+function sync() {
+  [...pager.children].forEach((b, i) => b.classList.toggle("active", i === cur));
+  document.querySelectorAll("nav ul a").forEach(a => {
+    a.classList.toggle("active", faces.findIndex(f => "#" + f.id === a.getAttribute("href")) === cur);
+  });
+}
+
+function go(n) {
+  if (busy || n === cur || n < 0 || n >= faces.length) return;
+  const d = n > cur ? 1 : -1, from = faces[cur], to = faces[n];
+  busy = true; lockUntil = performance.now() + DUR + 350;
+  to.classList.add("vis", d > 0 ? "at-next" : "at-prev", "snap", "shade", "on");
+  scrollers[n].scrollTop = d > 0 ? 0 : scrollers[n].scrollHeight;
+  from.classList.remove("cur");
+  void to.offsetWidth;
+  to.classList.remove("snap", "shade");
+  from.classList.add("shade");
+  cube.classList.add(d > 0 ? "roll-next" : "roll-prev"); // 다음: 오른쪽 → 왼쪽
+  setTimeout(() => {
+    cube.classList.add("noanim");
+    cube.classList.remove("roll-next", "roll-prev");
+    from.classList.remove("vis", "shade", "on");
+    to.classList.remove("at-next", "at-prev");
+    to.classList.add("cur");
+    void cube.offsetWidth;
+    cube.classList.remove("noanim");
+    cur = n; busy = false; sync();
+    history.replaceState(null, "", "#" + to.id);
+  }, DUR + 40);
+}
+
+// 현재 페이지 내부가 100vh보다 길면 끝까지 스크롤한 뒤에만 넘어감
+function canScroll(d) {
+  const s = scrollers[cur];
+  if (s.scrollHeight <= s.clientHeight + 1) return false;
+  return d > 0 ? s.scrollTop + s.clientHeight < s.scrollHeight - 2 : s.scrollTop > 2;
+}
+scrollers.forEach(s => s.addEventListener("scroll", () => lastScroll = performance.now(), { passive: true }));
+
+window.addEventListener("wheel", e => {
+  const d = e.deltaY > 0 ? 1 : -1;
+  if (canScroll(d)) return;
+  e.preventDefault();
+  const now = performance.now();
+  if (busy || now < lockUntil || Math.abs(e.deltaY) < 4 || now - lastScroll < 200) return;
+  go(cur + d);
+}, { passive: false });
+
+window.addEventListener("keydown", e => {
+  const d = ["ArrowDown", "PageDown"].includes(e.key) ? 1 : ["ArrowUp", "PageUp"].includes(e.key) ? -1 : 0;
+  if (!d || canScroll(d)) return;
+  e.preventDefault(); go(cur + d);
+});
+
+let ty = 0, ts = 0;
+window.addEventListener("touchstart", e => { ty = e.touches[0].clientY; ts = scrollers[cur].scrollTop }, { passive: true });
+window.addEventListener("touchend", e => {
+  const dy = ty - e.changedTouches[0].clientY, d = dy > 0 ? 1 : -1;
+  if (Math.abs(dy) < 70 || scrollers[cur].scrollTop !== ts || canScroll(d)) return;
+  go(cur + d);
+}, { passive: true });
+
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  const i = faces.findIndex(f => "#" + f.id === a.getAttribute("href"));
+  if (i >= 0) go(i);
+}));
+
+// 시연 사이트 전환 버튼 (Haevichi / BYHEYDEY)
+const siteBtns = document.querySelectorAll(".siteBtn"), siteDemos = document.querySelectorAll(".siteDemo");
+siteBtns.forEach(btn => btn.addEventListener("click", () => {
+  siteBtns.forEach(b => { b.classList.toggle("active", b === btn); b.setAttribute("aria-selected", b === btn) });
+  siteDemos.forEach((d, i) => d.classList.toggle("off", i !== +btn.dataset.site));
+}));
+
+// 데모 iframe: 기본은 휠이 페이지 전환에 쓰이고, 클릭하면 사이트 조작 모드
+document.querySelectorAll(".demoBody").forEach(b => {
+  const s = b.querySelector(".shield");
+  s.addEventListener("click", () => s.classList.add("off"));
+  b.addEventListener("mouseleave", () => s.classList.remove("off"));
+});
+
+faces[cur].classList.add("vis", "cur"); sync();
+setTimeout(() => faces[cur].classList.add("on"), 150);

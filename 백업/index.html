@@ -26,8 +26,8 @@
     </nav>
   </header>
 
-  <div class="stage"><div class="cube">
-    <div class="face" id="home"><div class="scroll"><section class="hero">
+  <main id="home">
+    <section class="hero">
       <div class="heroText reveal">
         <p class="kicker">// portfolio.init()</p>
         <h1>MIN<span>SU</span> PARK</h1>
@@ -48,9 +48,9 @@
   <span class="g">status</span>: <span class="w">"open_to_work"</span>
 };<span class="cursor"></span></pre>
       </div>
-    </section></div></div>
+    </section>
 
-    <div class="face" id="projects"><div class="scroll"><section>
+    <section id="projects">
       <div class="title reveal">
         <small>01 / PROJECTS</small>
         <h2>Selected work.</h2>
@@ -98,14 +98,14 @@
           </div>
         </article>
       </div>
-    </section></div></div>
+    </section>
 
-    <div class="face" id="demo"><div class="scroll"><section class="demoSection">
-      <div class="demoTop"><div class="title reveal"><small>02 / LIVE DEMO</small>
+    <section class="demoSection">
+      <div class="title reveal"><small>02 / LIVE DEMO</small>
         <h2>실제 사이트 시연.</h2>
         <p>포트폴리오 안에서 직접 배포된 사이트를 확인할 수 있도록 구성했습니다. Desktop / Mobile 버튼으로 반응형 화면을 바로 전환해서 볼 수 있으며, 일부 브라우저에서는 외부 사이트의 iframe 표시가 제한될 수 있습니다.</p>
-      </div><div class="siteTabs" role="tablist" aria-label="시연 사이트 선택"><button class="siteBtn active" type="button" data-site="0" role="tab" aria-selected="true">Haevichi</button><button class="siteBtn" type="button" data-site="1" role="tab" aria-selected="false">BYHEYDEY</button></div></div>
-      <div class="demo card reveal siteDemo">
+      </div>
+      <div class="demo card reveal">
         <div class="demoHead">
           <strong>Haevichi — Live Preview</strong>
           <div class="demoRight">
@@ -121,11 +121,9 @@
         <div class="demoBody">
           <iframe class="frame" src="https://mspark0509.github.io/haevichi-test-server/"
             title="Haevichi 프로젝트 실제 사이트 시연"></iframe>
-          <div class="shield"><span>클릭하면 사이트 조작 · 휠로 페이지 이동</span></div>
         </div>
       </div>
-      
-<div class="demo card reveal siteDemo off">
+      <div class="demo card reveal">
         <div class="demoHead">
           <strong>BYHEYDEY — Live Preview</strong>
           <div class="demoRight">
@@ -140,12 +138,11 @@
         </div>
         <div class="demoBody">
           <iframe class="frame" src="https://wjdqhal.github.io/byheydey-fin/" title="BYHEYDEY 프로젝트 실제 사이트 시연"></iframe>
-          <div class="shield"><span>클릭하면 사이트 조작 · 휠로 페이지 이동</span></div>
         </div>
       </div>
-    </section></div></div>
+    </section>
 
-    <div class="face" id="skills"><div class="scroll"><section>
+    <section id="skills">
       <div class="title reveal"><small>03 / STACK</small>
         <h2>Tech stack.</h2>
         <p>현재 사용하는 기술과 앞으로 React 개발에 집중해 확장하고 있는 기술입니다.</p>
@@ -172,9 +169,9 @@
           <p>Version Control</p>
         </div>
       </div>
-    </section></div></div>
+    </section>
 
-    <div class="face" id="build"><div class="scroll"><section>
+    <section>
       <div class="title reveal"><small>04 / DEVELOPMENT</small>
         <h2>How I build.</h2>
         <p>프로젝트를 진행할 때 디자인을 코드로 옮기는 것에서 끝내지 않고 구조와 사용자 경험까지 함께 확인합니다.</p>
@@ -197,9 +194,9 @@
           <p>Desktop부터 Mobile까지 콘텐츠 우선순위가 유지되는 유연한 레이아웃을 구성합니다.</p>
         </div>
       </div>
-    </section></div></div>
+    </section>
 
-    <div class="face" id="contact"><div class="scroll"><section class="contact">
+    <section id="contact" class="contact">
       <div class="card contactBox reveal">
         <p class="kicker">// ready_to_work()</p>
         <h2>Let's build<br>something useful.</h2>
@@ -207,8 +204,8 @@
         <div class="actions"><a class="btn primary" href="mailto:your-email@example.com">Email me →</a><a class="btn"
             href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
-    </section></div></div>
-  </div></div>
+    </section>
+  </main>
 
   <footer>
     <div><span>© 2026 MINSU PARK — React Developer</span><span>Built with HTML · CSS · JavaScript</span></div>
